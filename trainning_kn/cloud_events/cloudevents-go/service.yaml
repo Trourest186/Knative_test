@@ -1,0 +1,13 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: cloudevents-go
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+      - image: docker.io/trourest186/cloudevent
+        env:
+          - name: K_SINK
+            value: http://default-broker.default.svc.cluster.local
